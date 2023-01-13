@@ -20,7 +20,7 @@ export function BooksProvider ({children}) {
 
   const updateBook = (newBook) => {
     setBooks(books.map(book => {
-      if(book.available === newBook.available) {
+      if(book.id === newBook.id) {
         return newBook
       } else {
         return book
@@ -43,16 +43,19 @@ const initialBooks = [
       {
         id: 1,
         title: 'title 1',
+        author: 'author 1',
         available: true
       },
       {
         id: 2,
         title: 'title 2',
+        author: 'author 2',
         available: true
       },
       {
         id: 3,
-        title: 'title 2',
+        title: 'title 3',
+        author: 'author 3',
         available: false
       }
     ];

@@ -8,7 +8,7 @@ const ListBooks = (onUpdateBook) => {
 
     return (
         <ul className="book">
-            {books.map(book => (
+            {booksContext.books.map(book => (
                 <li className= "book_item" key={book.id}>
                    
                     <p>{book.title}</p>
