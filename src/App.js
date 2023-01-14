@@ -1,19 +1,17 @@
 import React from 'react';
 import {ChakraProvider,theme,} from '@chakra-ui/react';
-import { BooksProvider } from './booksContext'; 
+import BooksProvider from './contexts/booksContext'; 
 
-import InputBook from './components/header'
+import Header from './components/Header'
 import ListBooks from './components/ListBooks'
 
-export default function App(createBook) {
+export default function App() {
   return (
     <BooksProvider>
       <section className="wrapper">
         <ChakraProvider theme={theme}>
-        <InputBook onCreateBook={createBook}/>
-        <ListBooks 
-       
-        />
+        <Header />
+        <ListBooks />
         </ChakraProvider>
       </section>
     </BooksProvider>

@@ -1,9 +1,9 @@
 import ItemBook from './ItemBook';
-import { BooksContext } from '../booksContext';
+import { BooksContext } from '../contexts/booksContext';
 import { useContext } from 'react';
 
 
-const ListBooks = (onUpdateBook) => {
+const ListBooks = () => {
     const booksContext = useContext(BooksContext);
 
     return (
@@ -16,7 +16,7 @@ const ListBooks = (onUpdateBook) => {
                     <p>{book.available}</p>
                     <ItemBook
                         book={book}
-                        onUpdateBook={onUpdateBook}
+                        // onUpdateBook={onUpdateBook}
                     />
 
                 </li>

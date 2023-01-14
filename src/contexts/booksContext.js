@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 export const BooksContext = createContext(null);
 
-export function BooksProvider ({children}) {
+export default function BooksProvider ({children}) {
   const [books, setBooks] = useState(initialBooks);
 
   const createBook = title => {
