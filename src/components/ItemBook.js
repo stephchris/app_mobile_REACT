@@ -1,7 +1,16 @@
 
 import { useContext, useState } from 'react';
 import { BooksContext } from '../contexts/booksContext'
+import { Link } from "react-router-dom";
 
+// function Itembook() {
+//   return (
+//     <div>
+//       <Link className="btn_detail" to='/itemBook'>Detail</Link>          {/* link puis to et le chemin, et non pas a href   cf discord 11/01 9h02 */}      
+      
+//     </div>
+//   )
+// }
 
 const ItemBook = ({book}) => {
     // const [isNotAvailable, setIsNotAvailable] = useState(false)
@@ -44,6 +53,13 @@ const ItemBook = ({book}) => {
 // )
 //     }
 // }
+
+return (
+    <div>
+      <Link className="btn_detail" to='/itemBook'>Detail</Link>          {/* link puis to et le chemin, et non pas a href   cf discord 11/01 9h02 */}      
+      
+    </div>
+  )
 }
 
 export default ItemBook
