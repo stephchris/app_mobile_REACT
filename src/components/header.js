@@ -13,6 +13,15 @@ const Header = () => {
         <Heading as='h1' size='4xl' noOfLines={1}>
           Borrowed Book
         </Heading>
+        <form id="book_form" onSubmit={(e) => {
+        e.preventDefault()
+        if(!title) 
+          return
+        booksContext.createBook(title)
+        setTitle('')
+        }}>
+        
+        </form>
       </>     
     )
 
