@@ -1,13 +1,13 @@
 // import React from 'react';
 import {ChakraProvider,theme,} from '@chakra-ui/react';
 import BooksProvider from './contexts/booksContext'; 
-import { useNavigate } from 'react-router-dom';
+import { AppContext } from './contexts/appContext';
 
 import Header from './components/Header'
 import ListBooks from './components/ListBooks'
 
 export default function App() {
-  const navigate = useNavigate()
+  // const appContext = useContext(AppContext)
   return (
     <BooksProvider>
       <section className="wrapper">

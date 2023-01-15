@@ -2,11 +2,11 @@
 import { useContext, useState } from 'react';
 import { BooksContext } from '../contexts/booksContext'
 import { Link } from "react-router-dom";
-import { Button } from '@chakra-ui/react';
+// import { Button } from '@chakra-ui/react';
 
-function Detail() {
+// function Detail() {
  
-}
+// }
 
 const ItemBook = ({book}) => {
     const [isNotAvailable, setIsNotAvailable] = useState(false)
@@ -53,10 +53,11 @@ const ItemBook = ({book}) => {
 
     return (
         <>
-        {itemContent}
+        
         <button 
             type= "button"
-            className= {book.available && !isNotAvailable ? 'Disponible' : 'Indisponible'}></button>
+            className= {book.available && !isNotAvailable ? 'Disponible' : 'Indisponible'}>
+        </button>
 
 
 
@@ -65,6 +66,6 @@ const ItemBook = ({book}) => {
         </div>
         </>
     )
-} 
+}
 
 export default ItemBook

@@ -1,9 +1,22 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const BooksContext = createContext(null);
 
 export default function BooksProvider ({children}) {
-  const [books, setBooks] = useState(initialBooks);
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    fetchGetBooks().then(books => setBooks(books));
+  },[]);
+
+  const fetchGetBooks = async() => {
+    const url = 'http://localhost:3001/books';
+    const response = await fetch(url);
+    const data = await response.json();
+
+  return data;
+  
+  }
 
   const createBook = title => {
     setBooks([

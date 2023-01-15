@@ -1,7 +1,10 @@
+// import { AppContext } from './context/appContext';
 import { Link } from "react-router-dom";
 
-export default function Basket() {
 
+export default function Detail() {
+    // const appContext = useContext(AppContext);
+    
 // const ItemBook = ({book}) => {
 //     const [isNotAvailable, setIsNotAvailable] = useState(false)
 //     const booksContext = useContext(booksContext);
@@ -10,7 +13,7 @@ export default function Basket() {
 //   if(isNotAvailable) {
 //   itemContent = (
 //     <>
-// //         <input
+//         <input
 //             type="text"
 //             value={book.title}
 //             onChange={(e) => {
@@ -44,13 +47,14 @@ export default function Basket() {
     
   return (
 
-    <>
+    <section className="wrapper">
+    <h1>Détails du livre</h1>
     
     <div>
       <Link className="btn_borrow" to='/detail'>Emprunter</Link>                
       
     </div>
-    </>
+    </section>
   )
-  }
+}
 
