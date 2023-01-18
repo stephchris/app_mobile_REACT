@@ -7,7 +7,9 @@ import Basket from '../routes/Basket';
 export const AppContext = createContext(null)
 
 export function AppProvider() {
-  const [title, setTitle] = useState()
+  const [name, setName] = useState()
+
+  
 
   const router = createBrowserRouter([
     {
@@ -26,7 +28,7 @@ export function AppProvider() {
   ])
 
   return (
-    <AppContext.Provider value={{title, setTitle}}>
+    <AppContext.Provider value={{name, setName}}>
       <RouterProvider router={router} />
     </AppContext.Provider>
   )

@@ -1,8 +1,9 @@
 
 import { useContext, useState } from 'react';
 import { BooksContext } from '../contexts/booksContext'
-import { Link } from "react-router-dom";
-// import { Button } from '@chakra-ui/react';
+// import { Link } from "react-router-dom";
+import API from '../api/booksAPI';
+
 
 // function Detail() {
  
@@ -11,41 +12,49 @@ import { Link } from "react-router-dom";
 const ItemBook = ({book}) => {
     const [isNotAvailable, setIsNotAvailable] = useState(false)
     const booksContext = useContext(BooksContext);
+    const [name, setName] = useState(book.name);
     let itemContent;
 
   if(isNotAvailable) {
-  itemContent = (
-    <>
-        <input
-            type="text"
-            value={book.title}
-            onChange={(e) => {
-                booksContext.updateBook({
-                    ...book,
-                    title: e.target.value,
-                    available: false
-                })
-                setIsNotAvailable(false)
-            }}
-            />
-            <button type='button'>Indisponible</button>
-    </>
-  )
-    } else {
-    itemContent = (
-        <>
-        <input
-            type="text"
-            value={book.title}
-            className={book.available ? 'available' : ''}
-            available={true}
-            onChange={(e) => {}}
-        />
-        <button 
-            type='button' 
-            onChange={() => setIsNotAvailable(true)}>Disponible</button>
-            </>
-    )
+//   itemContent = (
+//     <>
+//         <input
+//             type="text"
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//         /> 
+//             <button 
+//                 type='button'
+//                 onChange={() => {
+//                     API.updateBook(name.id, {
+//                         ...name,
+//                         name: name,
+//                         available: false
+//                       }).then(res => {
+//                         if (res) {
+//                           API.getBooks().then(books => booksContext.rebuildBooks(books));
+//                         }
+//                       });
+//                       setIsNotAvailable(false)
+//                     }}>Indisponible
+//             </button>
+//                 </>
+//               )  
+//     } else {
+//     itemContent = (
+//         <>
+//         <input
+//             type="text"
+//             value={book.name}
+//             className={book.available ? 'available' : ''}
+//             available={true}
+//             onChange={(e) => {}}
+//         />
+//         <button 
+//             type='button' 
+//             onChange={() => setIsNotAvailable(true)}>Disponible</button>
+//             </>
+//     )
 }
 
 
@@ -53,17 +62,20 @@ const ItemBook = ({book}) => {
 
     return (
         <>
-        
+        {itemContent}
         <button 
             type= "button"
-            className= {book.available && !isNotAvailable ? 'Disponible' : 'Indisponible'}>
-        </button>
-
-
-
-        <div>
-            <Link className="btn_detail" to='/itemBook'>Detail</Link>              
-        </div>
+            className= {book.available && !isNotAvailable ? 'Disponible' : 'Indisponible'}
+            onChange={() => {
+                API.updateBook(book.id, {
+                    ...book,
+                    available: !book.available
+                }).then(res => {
+                    if(res) {
+                        API.getBooks().then(books => booksContext.rebuildBooks(books));
+                    }
+                });
+            }}></button>
         </>
     )
 }
