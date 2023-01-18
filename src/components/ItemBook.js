@@ -16,45 +16,30 @@ const ItemBook = ({book}) => {
     let itemContent;
 
   if(isNotAvailable) {
-//   itemContent = (
-//     <>
-//         <input
-//             type="text"
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//         /> 
-//             <button 
-//                 type='button'
-//                 onChange={() => {
-//                     API.updateBook(name.id, {
-//                         ...name,
-//                         name: name,
-//                         available: false
-//                       }).then(res => {
-//                         if (res) {
-//                           API.getBooks().then(books => booksContext.rebuildBooks(books));
-//                         }
-//                       });
-//                       setIsNotAvailable(false)
-//                     }}>Indisponible
-//             </button>
-//                 </>
-//               )  
-//     } else {
-//     itemContent = (
-//         <>
-//         <input
-//             type="text"
-//             value={book.name}
-//             className={book.available ? 'available' : ''}
-//             available={true}
-//             onChange={(e) => {}}
-//         />
-//         <button 
-//             type='button' 
-//             onChange={() => setIsNotAvailable(true)}>Disponible</button>
-//             </>
-//     )
+  itemContent = (
+    <>
+ 
+            <button 
+                type='button'
+                value={name}
+                available = "false"
+                        
+                onClick={(e) => setIsNotAvailable(false)
+    
+                      }
+                
+                    >Indisponible
+            </button>
+                </>)
+             
+    } else {
+    itemContent = (
+        
+        <button 
+            type='button' 
+            onChange={() => setIsNotAvailable(true)}>Disponible</button>
+            
+    )
 }
 
 
@@ -64,19 +49,31 @@ const ItemBook = ({book}) => {
         <>
         {itemContent}
         <button 
-            type= "button"
-            className= {book.available && !isNotAvailable ? 'Disponible' : 'Indisponible'}
-            onChange={() => {
-                API.updateBook(book.id, {
-                    ...book,
-                    available: !book.available
-                }).then(res => {
-                    if(res) {
-                        API.getBooks().then(books => booksContext.rebuildBooks(books));
+        type="button" 
+        className={book.avaible && !isNotAvailable ? 'btn-check':''}
+        disabled={setIsNotAvailable}
+        onClick={() => {
+          API.updateBook(book.id, {
+            ...book,
+           available: !book.available
+          }).then(res => {
+            if (res) {
+              API.getBooks().then(books => booksContext.rebuildBooks(books));
+            }
+          });
+        }}><i className="étails"></i></button>
+        <button 
+            type='button'
+            className={book.available && !isNotAvailable ? "Détails" : 'Indisponible'}
+            onClick={() => {
+                API.getBooks(book.id.then(res => {
+                    if (res) {
+                        API.getBooks().then(book);
                     }
-                });
-            }}></button>
-        </>
+                } ));
+            }}
+            ><i className="Détails"></i></button>
+            </>
     )
 }
 

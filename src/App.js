@@ -5,11 +5,20 @@ import BooksProvider from './contexts/booksContext';
 
 import Header from './components/Header'
 import ListBooks from './components/ListBooks'
-import { Container, } from '@chakra-ui/react'
+import { Container, Box} from '@chakra-ui/react'
 
 export default function App() {
   return (
-    // <Container>
+    <Container maxW='container.sm'  bgGradient={[
+    'linear(to-tr, teal.300, yellow.400)',
+    'linear(to-t, blue.200, teal.500)',
+    'linear(to-b, orange.100, purple.300)',
+  ]} centerContent>
+    <Box padding='4' bgGradient={[
+    'linear(to-tr, teal.300, yellow.400)',
+    'linear(to-t, blue.200, teal.500)',
+    'linear(to-b, orange.100, purple.300)',
+  ]} color='black' maxW='sm'>
     <BooksProvider>
       <section className="wrapper">
         
@@ -27,7 +36,8 @@ export default function App() {
         
       </section>
     </BooksProvider>
-   //</Container> 
+    </Box>
+           </Container>
   )
 }
 

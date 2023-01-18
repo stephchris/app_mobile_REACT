@@ -2,12 +2,14 @@
 import { Link } from "react-router-dom";
 import { Button } from '@chakra-ui/react'
 
-// import ItemBook from "../components/ItemBook";
+
+import ListBooks from "../components/ListBooks";
+import ItemBook from "../components/ItemBook";
 import { Heading } from '@chakra-ui/react'
 import BooksProvider from "../contexts/booksContext";
 import { useNavigate } from "react-router-dom";
 
-
+let book = []
 export default function Detail() {
   const navigate = useNavigate();
     // const appContext = useContext(AppContext);
@@ -58,11 +60,16 @@ export default function Detail() {
       <Heading as='h1' size='4xl' noOfLines={1}>
         Détails du livre
       </Heading>
-   
+   <div className="itemBook">
+    <ListBooks>
+          <ItemBook itemBook={book}/>
+
+    </ListBooks>
+   </div>
     
-      <p>
-        <Button colorScheme='blue' onClick={() => navigate("/basket")}>Emprunter</Button>
-      </p>
+   <Button colorScheme='blue' onClick={() => navigate("/basket")}>Emprunter</Button>
+        
+      
       <Link to='/'>Retour vers la page d'accueil</Link>
     </section>
     </BooksProvider>

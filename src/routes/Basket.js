@@ -14,7 +14,7 @@ return (
         Panier
     </Heading>
 
-    <Button colorScheme='blue' type="submit" className="btn_pay" to='/basket'>Monnaie d'échange</Button> 
+    <Button colorScheme='purple' type="submit" className="btn_pay" to='/basket'>Monnaie d'échange</Button> 
 
     <Link to='/detail'>Retour vers la page détail</Link> 
 
