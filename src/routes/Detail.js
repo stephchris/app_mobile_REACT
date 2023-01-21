@@ -1,77 +1,46 @@
-// import { AppContext } from './context/appContext';
-import { Link } from "react-router-dom";
-import { Button } from '@chakra-ui/react'
-
-
-import ListBooks from "../components/ListBooks";
-import ItemBook from "../components/ItemBook";
-import { Heading } from '@chakra-ui/react'
-import BooksProvider from "../contexts/booksContext";
+import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import BooksProvider from "../contexts/booksContext";
+import { BooksContext } from "../contexts/booksContext";
 
-let book = []
+import { Heading, chakra } from '@chakra-ui/react'
+
 export default function Detail() {
-  const navigate = useNavigate();
-    // const appContext = useContext(AppContext);
-    
-// const ItemBook = ({book}) => {
-//     const [isNotAvailable, setIsNotAvailable] = useState(false)
-//     const booksContext = useContext(booksContext);
-//     let itemContent;
-
-//   if(isNotAvailable) {
-//   itemContent = (
-//     <>
-//         <input
-//             type="text"
-//             value={book.title}
-//             onChange={(e) => {
-//                 booksContext.updateBook({
-//                     ...book,
-//                     title: e.target.value,
-//                     available: false
-//                 })
-//             }}
-//             />
-//             <button type='button'>Indisponible</button>
-//     </>
-//   )
-//     } else {
-//     itemContent = (
-//         <>
-//         <input
-//             type="text"
-//             value={book.title}
-//             className={book.available ? 'available' : ''}
-//             available={true}
-//             onChange={(e) => {}}
-//         />
-//         <button type='button'>Disponible</button>
-//             </>
-//     )
-// }
+  const navigate = useNavigate()
+  const { state } = useLocation()
+  const booksContext = useContext(BooksContext)
+    return (
+      
+      
 
 
-  
-  return (
     <BooksProvider>
-    
     <section className="wrapper">
-      <Heading as='h1' size='4xl' noOfLines={1}>
+      
+      <Heading as='h1' size='xl' noOfLines={1}>
         Détails du livre
-      </Heading>
-   <div className="itemBook">
-    <ListBooks>
-          <ItemBook itemBook={book}/>
-
-    </ListBooks>
-   </div>
-    
-   <Button colorScheme='blue' onClick={() => navigate("/basket")}>Emprunter</Button>
+      </Heading>  
+      <p>{ state }</p> 
+      <chakra.button
+                    px='3'
+  py='2'
+  bg='gray.300'
+  rounded='md'
+  _hover={{ bg: 'gray.600', color: 'white' }} onClick={() => navigate("/basket")}>Emprunter</chakra.button>
+       
         
+
       
       <Link to='/'>Retour vers la page d'accueil</Link>
     </section>
     </BooksProvider>
-  )
+    )
+  
 }
+
+
+
+
+    
+  

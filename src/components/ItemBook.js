@@ -5,10 +5,6 @@ import { BooksContext } from '../contexts/booksContext'
 import API from '../api/booksAPI';
 
 
-// function Detail() {
- 
-// }
-
 const ItemBook = ({book}) => {
     const [isNotAvailable, setIsNotAvailable] = useState(false)
     const booksContext = useContext(BooksContext);
@@ -78,3 +74,4 @@ const ItemBook = ({book}) => {
 }
 
 export default ItemBook
+
